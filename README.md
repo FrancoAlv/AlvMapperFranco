@@ -170,8 +170,8 @@ android{
 }
 
 dependencies {
-    implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:<YOUR_VERSION>")
-    kapt("com.github.FrancoAlv:AlvMapperFranco:<YOUR_VERSION>")
+    implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:<YOUR_VERSION>") //1.0.1
+    kapt("com.github.FrancoAlv:AlvMapperFranco:<YOUR_VERSION>") //1.0.2
     
 }
 ```
