@@ -1,6 +1,6 @@
 # Mapper Decorator
 
-Alv Mapper Decorator es una poderosa herramienta que permite generar mappers entre diferentes clases de una manera eficiente y elegante.
+Mapper Decorator es una solución elegante diseñada para mapear clases en Kotlin. Fue creado específicamente para Room y, a diferencia de otros ORM, no admite relaciones.
 
 ## Características
 
@@ -36,6 +36,57 @@ com.grupoalv.mapper.MapperTwo(id=mapperone?.id ,)
 
 public fun toMapperTwoToMapperone(mappertwo: MapperTwo?): Mapperone =
 com.grupoalv.mapper.Mapperone(id=mappertwo?.id ,)
+}
+
+```
+
+### Caso mas realista
+```kotlin
+data class Persona(val id:String?=null,
+                   val nombre:String?=null,
+                   val correo:Correo?=null,
+                   val edad:Int?=null,)
+
+data class Correo(val id:String?=null,
+                  val nombre:String?=null,
+                  val fecha:String?=null,)
+
+@TableEntity(Correo::class)
+data class CorreoEntity(val id:String?=null,
+                        val nombre:String?=null,
+                        val fecha:String?=null,)
+
+@TableEntity(Persona::class)
+data class PersonaEntity(
+    val id: String? = null,
+    val nombre: String? = null,
+    @MapperName("edad") val edad_old:Int?=null,
+    @Mapper val correo: Correo? = null,
+    @IgnoreField val final_id:String?=null,
+)
+
+public object MapperPersonaEntity {
+    public fun toPersonaEntityToPersona(personaentity: PersonaEntity?): Persona =
+        com.grupoalv.mapper.data.Persona(
+            id = personaentity?.id, nombre = personaentity?.nombre,
+            edad = personaentity?.edad_old, correo = personaentity?.correo,
+        )
+
+    public fun toPersonaToPersonaEntity(persona: Persona?): PersonaEntity =
+        com.grupoalv.mapper.entity.PersonaEntity(
+            id = persona?.id, nombre = persona?.nombre,
+            correo = persona?.correo, edad_old = persona?.edad,
+        )
+}
+
+public object MapperCorreoEntity {
+    public fun toCorreoEntityToCorreo(correoentity: CorreoEntity?): Correo =
+        com.grupoalv.mapper.data.Correo(id=correoentity?.id ,nombre=correoentity?.nombre
+            ,fecha=correoentity?.fecha ,)
+
+    public fun toCorreoToCorreoEntity(correo: Correo?): CorreoEntity =
+        com.grupoalv.mapper.entity.CorreoEntity(id=correo?.id ,nombre=correo?.nombre
+            ,fecha=correo?.fecha ,)
 }
 ```
 
