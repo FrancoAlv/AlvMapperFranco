@@ -45,7 +45,7 @@ class DecoradorProcesadorTable : AbstractProcessor() {
         const val KAPT_KOTLIN_GENERATED_OPTION_NAME = "kapt.kotlin.generated"
     }
 
-    private val nombreBase = "Encapsulated"
+    private val nombreBase = "Mapper"
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(TableEntity::class.java.name)
