@@ -4,11 +4,11 @@ Mapper Decorator es una solución elegante diseñada para mapear clases en Kotli
 
 ## Características
 
-- **@TableEntity**: Anotación para identificar la clase principal y la clase a la que se mapeará.
-- **@IgnoreField**: Ignora un campo específico en el mapeo.
-- **@Mapper**: Define una función personalizada para el mapeo.
-- **@MapperName**: Establece un nombre personalizado para el mapper.
-- **@PrimaryMapper**: Define el mapper principal en caso de múltiples mappers.
+- **@TableEntity**: Este decorador se utiliza para vincular una clase de entidad con una clase de datos. Le permite especificar qué clase de datos debe mapearse a una entidad específica.
+- **@IgnoreField**Este decorador se utiliza para indicar que un campo particular no debe ser incluido en el mapeo. Puede ser útil si tienes campos en la clase de origen que no tienen correspondencia en la clase de destino o si quieres excluir campos específicos por alguna razón.
+- **@Mapper**: Este decorador se utiliza para indicar que una propiedad en particular debe ser mapeada. Permite una correspondencia precisa entre campos en clases de origen y destino.
+- **@MapperName**: Este decorador se utiliza para cambiar el nombre del campo en el mapeo. Si tienes un campo con un nombre en la clase de origen y quieres que se mapee a un campo con un nombre diferente en la clase de destino, puedes utilizar esta anotación.
+- **@PrimaryMapper**: Este decorador se utiliza para designar una entidad como la principal en un mapeo compuesto. Por ejemplo, en el mapeo de una persona con una dirección, la entidad persona podría ser la principal.
 
 ## Uso
 
@@ -63,7 +63,7 @@ data class Correo(val id:String?=null,
 data class Address(val addressName:String?=null, val addresMulti:List<Int>?=null)
 
 ```
-### Definir las Clases capa entity
+### Definir las Clases capa Entity
 
 Defina las clases entre las que desea mapear, y utilice la anotación \`@TableEntity\` para vincularlas:
 
@@ -159,19 +159,19 @@ Incluya las dependencias necesarias en su archivo \`build.gradle\`:
 ```groovy
 
 plugins {
-id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.kapt")
 }
 android{
-sourceSets {
-getByName("main") {
-java.srcDir("${buildDir.absolutePath}/generated/source/kaptKotlin/")
-}
-}
+    sourceSets {
+        getByName("main") {
+            java.srcDir("${buildDir.absolutePath}/generated/source/kaptKotlin/")
+        }
+    }
 }
 
 dependencies {
-implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:1.0.1")
-kapt("com.github.FrancoAlv:AlvMapperFranco:1.0.2")
+    implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:1.0.1")
+    kapt("com.github.FrancoAlv:AlvMapperFranco:1.0.2")
 }
 ```
 
