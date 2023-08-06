@@ -138,12 +138,15 @@ public object MapperPersonaEntity {
 
 public object MapperPersonawithAdress {
     public fun toPersonawithAdressToPersona(personawithadress: PersonawithAdress?): Persona =
-        com.grupoalv.mapper.`data`.Persona(address=com.grupoalv.mapper.entity.MapperAddressEntity.toAddressEntityToAddress(personawithadress?.addressEntity),id=personawithadress?.personaEntity?.id
+        com.grupoalv.mapper.`data`.Persona(address=com.grupoalv.mapper.entity.MapperAddressEntity
+            .toAddressEntityToAddress(personawithadress?.addressEntity),id=personawithadress?.personaEntity?.id
             , nombre=personawithadress?.personaEntity?.nombre  ,
             correo=com.grupoalv.mapper.entity.MapperCorreoEntity.toCorreoEntityToCorreo(personawithadress?.personaEntity?.correo))
 
     public fun toPersonaToPersonawithAdress(persona: Persona?): PersonawithAdress =
-        com.grupoalv.mapper.entity.PersonawithAdress(addressEntity=com.grupoalv.mapper.entity.MapperAddressEntity.toAddressToAddressEntity(persona?.address),personaEntity=com.grupoalv.mapper.entity.MapperPersonaEntity.toPersonaToPersonaEntity(persona),)
+        com.grupoalv.mapper.entity.PersonawithAdress(addressEntity=com.grupoalv.mapper
+            .entity.MapperAddressEntity.toAddressToAddressEntity(persona?.address),
+            personaEntity=com.grupoalv.mapper.entity.MapperPersonaEntity.toPersonaToPersonaEntity(persona),)
 }
 
 ```
