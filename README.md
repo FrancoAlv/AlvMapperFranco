@@ -5,7 +5,7 @@ Mapper Decorator es una solución elegante diseñada para mapear clases en Kotli
 ## Características
 
 - **@TableEntity**: Este decorador se utiliza para vincular una clase de entidad con una clase de datos. Le permite especificar qué clase de datos debe mapearse a una entidad específica.
-- **@IgnoreField**Este decorador se utiliza para indicar que un campo particular no debe ser incluido en el mapeo. Puede ser útil si tienes campos en la clase de origen que no tienen correspondencia en la clase de destino o si quieres excluir campos específicos por alguna razón.
+- **@IgnoreField**: Este decorador se utiliza para indicar que un campo particular no debe ser incluido en el mapeo. Puede ser útil si tienes campos en la clase de origen que no tienen correspondencia en la clase de destino o si quieres excluir campos específicos por alguna razón.
 - **@Mapper**: Este decorador se utiliza para indicar que una propiedad en particular debe ser mapeada. Permite una correspondencia precisa entre campos en clases de origen y destino.
 - **@MapperName**: Este decorador se utiliza para cambiar el nombre del campo en el mapeo. Si tienes un campo con un nombre en la clase de origen y quieres que se mapee a un campo con un nombre diferente en la clase de destino, puedes utilizar esta anotación.
 - **@PrimaryMapper**: Este decorador se utiliza para designar una entidad como la principal en un mapeo compuesto. Por ejemplo, en el mapeo de una persona con una dirección, la entidad persona podría ser la principal.
