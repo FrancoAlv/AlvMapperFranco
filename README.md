@@ -41,6 +41,9 @@ com.grupoalv.mapper.Mapperone(id=mappertwo?.id ,)
 ```
 
 ### Caso mas realista
+
+Este documento proporciona una descripción detallada y un ejemplo concreto, lo cual debería ofrecer una comprensión completa de cómo funciona Alv Mapper Decorator. Por supuesto, puedes ajustar el contenido según tus necesidades y preferencias.
+
 ```kotlin
 data class Persona(val id:String?=null,
                    val nombre:String?=null,
