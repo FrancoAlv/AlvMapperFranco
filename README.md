@@ -54,7 +54,8 @@ data class Persona(val id:String?=null,
                    val nombre:String?=null,
                    val correo:Correo?=null,
                    val edad:Int?=null,
-    )
+                   val address: Address?=null
+)
 
 data class Correo(val id:String?=null,
                   val nombre:String?=null,
@@ -83,9 +84,7 @@ data class PersonaEntity(
     val nombre: String? = null,
     @MapperName("edad") val edad_old:Int?=null,
     @Mapper val correo: CorreoEntity? = null,
-    @IgnoreField val final_id:String?=null,
-
-    )
+    @IgnoreField val final_id:String?=null)
 
 
 @TableEntity(Persona::class)
@@ -93,6 +92,7 @@ data class PersonawithAdress (
     @PrimaryMapper
     val personaEntity: PersonaEntity?=null,
     @Mapper
+    @MapperName("address")
     val addressEntity: AddressEntity?=null)
 ```
 
@@ -138,12 +138,12 @@ public object MapperPersonaEntity {
 
 public object MapperPersonawithAdress {
     public fun toPersonawithAdressToPersona(personawithadress: PersonawithAdress?): Persona =
-        com.grupoalv.mapper.`data`.Persona(id=personawithadress?.personaEntity?.id  ,
-            nombre=personawithadress?.personaEntity?.nombre  ,
+        com.grupoalv.mapper.`data`.Persona(address=com.grupoalv.mapper.entity.MapperAddressEntity.toAddressEntityToAddress(personawithadress?.addressEntity),id=personawithadress?.personaEntity?.id
+            , nombre=personawithadress?.personaEntity?.nombre  ,
             correo=com.grupoalv.mapper.entity.MapperCorreoEntity.toCorreoEntityToCorreo(personawithadress?.personaEntity?.correo))
 
     public fun toPersonaToPersonawithAdress(persona: Persona?): PersonawithAdress =
-        com.grupoalv.mapper.entity.PersonawithAdress(personaEntity=com.grupoalv.mapper.entity.MapperPersonaEntity.toPersonaToPersonaEntity(persona),)
+        com.grupoalv.mapper.entity.PersonawithAdress(addressEntity=com.grupoalv.mapper.entity.MapperAddressEntity.toAddressToAddressEntity(persona?.address),personaEntity=com.grupoalv.mapper.entity.MapperPersonaEntity.toPersonaToPersonaEntity(persona),)
 }
 
 ```
