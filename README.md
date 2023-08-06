@@ -170,10 +170,13 @@ android{
 }
 
 dependencies {
-    implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:1.0.1")
-    kapt("com.github.FrancoAlv:AlvMapperFranco:1.0.2")
+    implementation("com.github.FrancoAlv:AlvMapperDecoradorFranco:<YOUR_VERSION>")
+    kapt("com.github.FrancoAlv:AlvMapperFranco:<YOUR_VERSION>")
+    
 }
 ```
+
+
 ## Conclusión
 
 Mapper Decorator elimina la necesidad de escribir manualmente el código repetitivo y propenso a errores para mapear entre clases. Proporciona una forma declarativa y eficiente de definir cómo se deben traducir las clases entre diferentes capas o contextos.
