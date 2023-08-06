@@ -104,34 +104,47 @@ El decorador generará automáticamente los mappers, permitiendo una conversión
 
 public object MapperAddressEntity {
   public fun toAddressEntityToAddress(addressentity: AddressEntity?): Address =
-      com.grupoalv.mapper.`data`.Address(addressName=addressentity?.addressName
-      ,addresMulti=addressentity?.addresMulti ,)
+      com.grupoalv.mapper.`data`.Address(
+          addressName = addressentity?.addressName,
+          addresMulti = addressentity?.addresMulti,
+      )
 
   public fun toAddressToAddressEntity(address: Address?): AddressEntity =
-      com.grupoalv.mapper.entity.AddressEntity(addressName=address?.addressName
-      ,addresMulti=address?.addresMulti ,)
+      com.grupoalv.mapper.entity.AddressEntity(
+          addressName = address?.addressName,
+          addresMulti = address?.addresMulti,
+      )
 }
 
 
 public object MapperCorreoEntity {
     public fun toCorreoEntityToCorreo(correoentity: CorreoEntity?): Correo =
-        com.grupoalv.mapper.`data`.Correo(id=correoentity?.id ,nombre=correoentity?.nombre
-            ,fecha=correoentity?.fecha ,)
+        com.grupoalv.mapper.`data`.Correo(
+            id = correoentity?.id, nombre = correoentity?.nombre,
+            fecha = correoentity?.fecha,
+        )
 
     public fun toCorreoToCorreoEntity(correo: Correo?): CorreoEntity =
-        com.grupoalv.mapper.entity.CorreoEntity(id=correo?.id ,nombre=correo?.nombre
-            ,fecha=correo?.fecha ,)
+        com.grupoalv.mapper.entity.CorreoEntity(
+            id = correo?.id, nombre = correo?.nombre,
+            fecha = correo?.fecha,
+        )
 }
 
 public object MapperPersonaEntity {
     public fun toPersonaEntityToPersona(personaentity: PersonaEntity?): Persona =
-        com.grupoalv.mapper.`data`.Persona(id=personaentity?.id ,nombre=personaentity?.nombre
+        com.grupoalv.mapper.`data`.Persona(id=personaentity?.id ,
+            nombre=personaentity?.nombre
             ,edad=personaentity?.edad_old
-            ,correo=com.grupoalv.mapper.entity.MapperCorreoEntity.toCorreoEntityToCorreo(personaentity?.correo),)
-
+            ,correo=com.grupoalv.mapper.entity.MapperCorreoEntity
+                .toCorreoEntityToCorreo(personaentity?.correo),)
+    
     public fun toPersonaToPersonaEntity(persona: Persona?): PersonaEntity =
-        com.grupoalv.mapper.entity.PersonaEntity(id=persona?.id ,nombre=persona?.nombre
-            ,correo=com.grupoalv.mapper.entity.MapperCorreoEntity.toCorreoToCorreoEntity(persona?.correo),edad_old=persona?.edad
+        com.grupoalv.mapper.entity.PersonaEntity(id=persona?.id 
+            ,nombre=persona?.nombre
+            ,correo=com.grupoalv.mapper.entity.MapperCorreoEntity
+                .toCorreoToCorreoEntity(persona?.correo),
+            edad_old=persona?.edad
             ,)
 }
 
